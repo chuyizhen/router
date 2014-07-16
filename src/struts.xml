@@ -17,9 +17,20 @@
 		<action name="index" class="indexAction" method="index">
 			<result name="show_login">/WEB-INF/page/admin/login.jsp</result>
 		</action>
+		<action name="userAction_*" class="userAction" method="{1}">
+			<result name="show_home">/WEB-INF/page/admin/home.jsp</result>
+		</action>
+		
+		<!--  -->
+		<action name="softAction_*" class="softAction" method="{1}">
+			<result name="show_soft">/WEB-INF/page/admin/softmanage.jsp</result>
+		</action>
 		
 	</package>  
-	<package name="dot" namespace="/" extends="json-default">
-		
+	<package name="router" namespace="/" extends="json-default">
+		<!-- login -->
+		<action name="ajaxlogin" class="userAction" method="ajaxlogin">
+			<result type="json"></result>
+		</action>
 	</package>
 </struts>
