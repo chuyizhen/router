@@ -5,6 +5,8 @@
 	<title>My WiFi Manage System</title>
 	<link rel="stylesheet" type="text/css" href="style/common.css" />
 	<link rel="stylesheet" type="text/css" href="style/layout.css" />
+	<script type="text/javascript" src="script/jquery.min.js"></script>
+	<script type="text/javascript" src="script/login.js"></script>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">
@@ -25,24 +27,24 @@
             <div class="lab_ipt_item">
                 <span class="lab100">账号:</span>
                 <div class="ipt-box">
-                    <input type="text" class="ipt_text_w150" />
+                    <input type="text" id="username" placeholder="输入账号" class="ipt_text_w150" />
                     <span class="asterisk"></span>
                 </div>
             </div>
             <div class="lab_ipt_item">
                 <span class="lab100">密码:</span>
                 <div class="ipt-box">
-                    <input type="password" class="ipt_text_w150" />
+                    <input type="password" id="password" placeholder="输入密码" class="ipt_text_w150" />
                     <span class="asterisk"></span>
                 </div>
             </div>
-            <div class="error-mess" style="display:none;">
+            <div id="error-mess" class="error-mess" style="display:none;">
 				<span class="error-icon"></span>
-                <span id="error-message">请输入用户名！</span>
+                <span id="error-message"></span>
 			</div>
             <div class="lab_ipt_item">
                 <span class="lab100"></span>
-                <div class="ipt-box"><input class="btn2" value="登录" type="submit"></div>
+                <div class="ipt-box"><input type="button" value="登录" onclick="login()" class="btn2"></div>
             </div>
 		</form>
 	</div> 

@@ -1,5 +1,9 @@
 package cn.voicet.router.web.action;
+import java.io.IOException;
+
 import javax.annotation.Resource;
+
+import net.sf.json.JSONObject;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
@@ -25,9 +29,10 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 	
 	@SuppressWarnings("unchecked")
 	public String ajaxlogin(){
-		/*log.info("account:"+userForm.getAccount()+", password:"+userForm.getPassword()+", vercode:"+userForm.getVercode());
+		log.info("account:"+userForm.getUsername()+", password:"+userForm.getPassword());
+		
 		JSONObject json = new JSONObject();
-		if (request.getSession().getAttribute("vts")==null) {
+		/*if (request.getSession().getAttribute("vts")==null) {
 			DotSession ds = new DotSession();
 			request.getSession().setAttribute("vts", ds);
 		}
@@ -49,21 +54,15 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		ds.curBM = ds.rbm;
 		ds.subPathTitle.initPath();
 		log.info("rand:"+request.getSession().getAttribute("rand"));
-		if(!ds.roleID.equals("0"))
-		{
-			json.put("status", "ok");
-		}
-		if(null!=request.getSession().getAttribute("rand") && !userForm.getVercode().trim().equals((String) request.getSession().getAttribute("rand")))
-		{
-			json.put("status", "vercodeerror");
-		}
+		*/
+		json.put("status", "ok");
 		try {
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().print(json.toString());
 			response.getWriter().flush();
 		} catch (IOException e) {
 			log.error(e);
-		}*/
+		}
 		return null;
 	}
 
