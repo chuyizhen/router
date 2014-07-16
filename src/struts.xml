@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<!-- 配置action的访问路径为.action的形式 -->
+	<constant name="struts.action.extension" value="action"></constant>
+	<!-- 配置struts的开发模式 -->
+	<constant name="struts.devMode" value="true"></constant>
+	<!-- 配置struts文件上传大小限制 -->
+	<constant name="struts.multipart.maxSize" value="1000000000"/>
+	<!-- 配置struts的简单模式 -->
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
+	<package name="system" namespace="/" extends="struts-default">
+		<!-- 首页功能 -->
+		<action name="index" class="indexAction" method="index">
+			<result name="show_login">/WEB-INF/page/admin/login.jsp</result>
+		</action>
+		
+	</package>  
+	<package name="dot" namespace="/" extends="json-default">
+		
+	</package>
+</struts>
