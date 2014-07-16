@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="router"
+  id="myeclipse.1405491607525"
+  context-root="/router"
+  j2ee-spec="5.0"
+  archive="router.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
