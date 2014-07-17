@@ -30,7 +30,8 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 	@SuppressWarnings("unchecked")
 	public String ajaxlogin(){
 		log.info("account:"+userForm.getUsername()+", password:"+userForm.getPassword());
-		
+		String res = userService.userLogin();
+		System.out.println("res:"+res);
 		JSONObject json = new JSONObject();
 		/*if (request.getSession().getAttribute("vts")==null) {
 			DotSession ds = new DotSession();
