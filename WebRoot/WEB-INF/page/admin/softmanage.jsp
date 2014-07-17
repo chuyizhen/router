@@ -1,12 +1,14 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>My WiFi Manage System</title>
-<script type="text/javascript" src="script/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="style/common.css" />
 <link rel="stylesheet" type="text/css" href="style/layout.css" />
+<script type="text/javascript" src="script/jquery.min.js"></script>
+<script type="text/javascript" src="script/soft_manage.js"></script>
 <script type="text/javascript">
 	$(function($) {
 		menu2.className='current';
@@ -24,34 +26,47 @@
 		     	<div class="lab_ipt_item">
                 	<span class="lab100">当前APK版本:</span>
                     <div class="ipt-box">
-                    	<input type="text" class="ipt_text_w150" />
-                        <span class="asterisk">*</span>
+                        <span><s:property value="#session.vts.map.curver"/></span>
                     </div>
                 </div>
                 <div class="lab_ipt_item">
+                	<span class="lab100">文件名称:</span>
+                    <div class="ipt-box">
+                        <span><s:property value="#session.vts.map.apkname"/></span>
+                    </div>
+                </div>
+                <div class="lab_ipt_item">
+                	<span class="lab100">上次更新时间:</span>
+                    <div class="ipt-box">
+                        <span><s:property value="#session.vts.map.updt"/></span>
+                    </div>
+                </div>
+                <form name="apkForm" action="" method="post" enctype="multipart/form-data">
+                <div class="lab_ipt_item">
                 	<span class="lab100">上传APK版本:</span>
                     <div class="ipt-box">
-                    	<input type="text" class="ipt_text_w150" />
+                    	<input type="text" id="ver" name="version" class="ipt_text_w150" />
                         <span class="asterisk">*</span>
                     </div>
                 </div>
                 <div class="lab_ipt_item">
                 	<span class="lab100">APK文件:</span>
                     <div class="ipt-box">
-                    	<input type="text" class="ipt_text_w150" />
+                    	<input type="file" id="apkFile" name="apkFile" class="ipt_text_w150" />
                         <span class="asterisk">*</span>
                     </div>
                 </div>
                 <div class="lab_ipt_item h132">
                 	<span class="lab100">升级描述:</span>
                     <div class="ipt-box h132">
-                    	<textarea name="content" class="ipt_textarea_w300"></textarea>
+                    	<textarea name="describe" class="ipt_textarea_w300"></textarea>
                         <span class="asterisk"></span>
                     </div>
                 </div>
+                </form>
                 <div class="lab_ipt_item">
                 	<span class="lab100"></span>
-                	<div class="ipt-box"><input class="btn2" value="提 交" type="submit"></div>
+                	<div class="ipt-box"><input type="button" class="btn2" value="提 交" onclick="uploadApkFile()"></div>
             	</div>
 	     	</div>   
   		</div>

@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import cn.voicet.router.service.UserService;
+import cn.voicet.router.util.DotSession;
 import cn.voicet.router.web.form.UserForm;
 
 import com.opensymphony.xwork2.ModelDriven;
@@ -27,36 +28,30 @@ public class UserAction extends BaseAction implements ModelDriven<UserForm>{
 		return userForm;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public String ajaxlogin(){
-		log.info("account:"+userForm.getUsername()+", password:"+userForm.getPassword());
-		String res = userService.userLogin();
-		System.out.println("res:"+res);
+		log.info("login username:"+userForm.getUsername()+", password:"+userForm.getPassword());
+		String res = userService.userLogin(userForm);
+		log.info("login result:"+res);
 		JSONObject json = new JSONObject();
-		/*if (request.getSession().getAttribute("vts")==null) {
+		if(null == request.getSession().getAttribute("vts"))
+		{
 			DotSession ds = new DotSession();
 			request.getSession().setAttribute("vts", ds);
 		}
 		DotSession ds=DotSession.getVTSession(request);
-		Map<String, String> map = userService.userLogin(userForm);
-		log.info("user login: "+map);
-		ds.map.put("name", map.get("username"));
-		ds.username=map.get("username");
-		ds.password = userForm.getPassword();
-		ds.account=userForm.getAccount();
-		ds.rbn = map.get("rbn");
-		ds.rbm = map.get("rbm");
-		ds.roleName = map.get("rolename");
-		ds.roleID=map.get("roleid");
-		ds.isedit = Integer.valueOf(map.get("isedit"));
-		ds.workyear=Integer.valueOf(map.get("workyear"));
-		ds.yearlock=Integer.valueOf(map.get("yearlock"));
-		
-		ds.curBM = ds.rbm;
-		ds.subPathTitle.initPath();
+		if(res.equalsIgnoreCase("ok"))
+		{
+			ds.username = userForm.getUsername();
+			json.put("status", "ok");
+			log.info(ds.username + " login success");
+		}
+		else{
+			json.put("status", "error");
+			log.info(userForm.getUsername() + " login failed for username or password error");
+		}
+		/*
 		log.info("rand:"+request.getSession().getAttribute("rand"));
 		*/
-		json.put("status", "ok");
 		try {
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().print(json.toString());

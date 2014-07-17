@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>My WiFi Manage System</title>
@@ -14,7 +15,7 @@
 </head>
 <div class="header">
 	<div class="main_logo"><a href="#"><img src="images/logo.png" height="44px;" alt="" title="" border="0" /></a></div>
-	<div class="right_header">欢迎 管理员, <a href="login.html" class="logout">退出</a></div>
+	<div class="right_header">欢迎 <s:property value="#session.vts.username"/>, <a href="${pageContext.request.contextPath }/index.action" class="logout">退出</a></div>
 	<div class="jclock"></div>
 </div>
     

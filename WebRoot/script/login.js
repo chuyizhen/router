@@ -1,3 +1,14 @@
+var confLogin = function(){
+	function init()
+	{
+		fml.username.focus();
+	}
+	return{
+		init:function(){init();}
+	}
+}();
+
+
 function login(){
 	var username = $("#username").val();
 	var password = $("#password").val();
@@ -34,21 +45,16 @@ function login(){
 }
 var responseLogin = function(data, textStatus, jqXHR)
 {
-	
+	var err_mess = document.getElementById("error-message");
 	if(data.status=="ok")
 	{
 		window.location.href="userAction_home.action";
 	}
-	else if(data.status=="vercodeerror")
-	{
-		alert("验证码错误,请重新输入!");
-		Form1.vercode.focus();
-	}
 	else
 	{
-		alert("账号或密码错误");
+		showMess();
+		err_mess.innerHTML="账号或密码错误";
 	}
-	//verImg.src = "verCode?"+Math.random();
 }
 
 function showMess(){

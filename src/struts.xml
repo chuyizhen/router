@@ -24,6 +24,7 @@
 		<!--  -->
 		<action name="softAction_*" class="softAction" method="{1}">
 			<result name="show_soft">/WEB-INF/page/admin/softmanage.jsp</result>
+			<result name="soft_home" type="redirectAction">softAction_home</result>
 		</action>
 		
 	</package>  

@@ -12,6 +12,11 @@
 	<meta http-equiv="expires" content="0">
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	<script type="text/javascript">
+		$(document).ready(function() {
+			confLogin.init();
+		});
+</script>
 </head>
 
 <body>
@@ -22,7 +27,7 @@
 	<div class="login_form">    
 		<h3>管理员登录</h3>
         <a href="#" class="forgot_pass">忘记密码</a> 
-        <form action="index-digital.html" method="post" class="form">
+        <form name="fml" action="" method="post" class="form">
 			<div class="lab_ipt_item_tit"></div>
             <div class="lab_ipt_item">
                 <span class="lab100">账号:</span>
