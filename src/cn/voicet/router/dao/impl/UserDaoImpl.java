@@ -7,8 +7,7 @@ import java.sql.SQLException;
 import oracle.jdbc.OracleTypes;
 
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.CallableStatementCallback;
-import org.springframework.jdbc.core.CallableStatementCreator;
+import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.stereotype.Repository;
 
 import cn.voicet.router.dao.UserDao;
@@ -17,18 +16,13 @@ import cn.voicet.router.dao.UserDao;
 public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 
 	public String userLogin() {
-		String res=(String) this.getJdbcTemplate().execute(new CallableStatementCreator() {
-			public CallableStatement createCallableStatement(Connection conn)
-					throws SQLException {
+		String res=(String) this.getJdbcTemplate().execute(new ConnectionCallback() {
+			public Object doInConnection(Connection conn) throws SQLException,
+					DataAccessException {
 				CallableStatement cs = conn.prepareCall("{call smp_userlogin(?,?,?)}");
 				cs.setString(1, "admin");
 				cs.setString(2, "yybegin");
 				cs.registerOutParameter(3, OracleTypes.VARCHAR);
-				return cs;
-			}
-		}, new CallableStatementCallback() {
-			public Object doInCallableStatement(CallableStatement cs)
-					throws SQLException, DataAccessException {
 				cs.execute();
 				return cs.getString(3);
 			}
