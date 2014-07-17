@@ -20,7 +20,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 		String res=(String) this.getJdbcTemplate().execute(new CallableStatementCreator() {
 			public CallableStatement createCallableStatement(Connection conn)
 					throws SQLException {
-				CallableStatement cs = conn.prepareCall("{call smp_userlogin(?,?)}");
+				CallableStatement cs = conn.prepareCall("{call smp_userlogin(?,?,?)}");
 				cs.setString(1, "admin");
 				cs.setString(2, "yybegin");
 				cs.registerOutParameter(3, OracleTypes.VARCHAR);
@@ -30,7 +30,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 			public Object doInCallableStatement(CallableStatement cs)
 					throws SQLException, DataAccessException {
 				cs.execute();
-				
 				return cs.getString(3);
 			}
 		});
