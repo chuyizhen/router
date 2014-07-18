@@ -22,5 +22,5 @@ h3{font-size:18px;color:#256c89;font-weight:normal;padding:15px 0 5px 20px;margi
 .error-mess{background:none repeat scroll 0% 0% #FFF0F0; border:1px solid #FFD2D2; height:26px; line-height:26px; margin:10px 0 0 104px; color:#B74D46; width:154px;}
 .error-mess .error-icon{display:inline-block; background:url('../images/login-logic-icons.png') no-repeat scroll 0px 0px transparent; width:16px; height:16px; vertical-align:middle; margin:-4px 5px 0px;}
 
-
+.rm_span, .rm_chk{vertical-align:middle; cursor:pointer;}
 

@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="style/common.css" />
 	<link rel="stylesheet" type="text/css" href="style/layout.css" />
 	<script type="text/javascript" src="script/jquery.min.js"></script>
+	<script type="text/javascript" src="script/jquery.cookie.js"></script>
 	<script type="text/javascript" src="script/login.js"></script>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -15,6 +16,11 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			confLogin.init();
+			if ($.cookie("rememberMe") == "true") { 
+				$("#rememberMe").attr("checked", true); 
+				$("#username").val($.cookie("username")); 
+				$("#password").val($.cookie("password")); 
+			} 
 		});
 </script>
 </head>
@@ -41,6 +47,13 @@
                 <div class="ipt-box">
                     <input type="password" id="password" placeholder="输入密码" class="ipt_text_w150" />
                     <span class="asterisk"></span>
+                </div>
+            </div>
+            <div class="lab_ipt_item">
+                <span class="lab100"></span>
+                <div class="ipt-box">
+                	<input type="checkbox" id="rememberMe" class="rm_chk"/>
+                    <label class="rm_span" for="rememberMe">记住密码</label>
                 </div>
             </div>
             <div id="error-mess" class="error-mess" style="display:none;">
