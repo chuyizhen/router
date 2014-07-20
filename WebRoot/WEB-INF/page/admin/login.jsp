@@ -22,6 +22,15 @@
 				$("#password").val($.cookie("password")); 
 			} 
 		});
+		document.onkeydown = function(e) {   
+			var theEvent = e || window.event;   
+			var code = theEvent.keyCode || theEvent.which || theEvent.charCode; 
+			if (code == 13) {   
+	    		login();
+	    		return false;   
+			}   
+			return true;
+		}
 </script>
 </head>
 
