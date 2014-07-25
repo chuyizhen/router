@@ -43,10 +43,11 @@ public class SoftDaoImpl extends BaseDaoImpl implements SoftDao {
 		this.getJdbcTemplate().execute(new ConnectionCallback() {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call smp_put_appverinfo(?,?,?)}");
-				cs.setString(1, softForm.getVersion());
-				cs.setString(2, softForm.getApkFileFileName());
-				cs.setString(3, softForm.getDescribe());
+				CallableStatement cs = conn.prepareCall("{call smp_put_appverinfo(?,?,?,?)}");
+				cs.setInt(1, 0);
+				cs.setString(2, softForm.getVersion());
+				cs.setString(3, softForm.getApkFileFileName());
+				cs.setString(4, softForm.getDescribe());
 				cs.execute();
 				return null;
 			}

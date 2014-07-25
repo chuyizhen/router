@@ -42,7 +42,16 @@ public class SoftAction extends BaseAction implements ModelDriven<SoftForm>{
 		//基于myFile创建一个文件输入流  
         InputStream is = new FileInputStream(softForm.getApkFile());
         // 设置上传文件目录  
-        String uploadPath = ServletActionContext.getServletContext().getRealPath("/download");  
+        String uploadPath = ServletActionContext.getServletContext().getRealPath("/download");
+        /******** upload file to other dir start ********/
+        //取得根目录路径  
+        String rootPath = ServletActionContext.getServletContext().getRealPath("/");
+        log.info("rootPath:"+rootPath);
+        rootPath = rootPath.substring(0, rootPath.length()-7);
+        log.info("sub rootPath:"+rootPath);
+        uploadPath = rootPath + "myWiFi/download";
+        log.info("add rootPath:"+rootPath);
+        /******** upload file to other dir end ********/
         // 设置目标文件  
         File toFile = new File(uploadPath, softForm.getApkFileFileName());  
         // 创建一个输出流  
