@@ -2,21 +2,30 @@ package cn.voicet.router.util;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
+
 public class DotSession {
 	
-	public String username;
-
-	public Map<Object, Object> map;
+	private static Logger log = Logger.getLogger(DotSession.class);
 	
+	public String username;
+	public Map<Object, Object> map;
+	public List<Object> list;
 	
 	public DotSession() {
 		username = "none";
 		map = new HashMap<Object, Object>();
+	}
+	
+	public void initListData() {
+		list = new ArrayList<Object>();
 	}
 	
 	public static DotSession getVTSession(HttpServletRequest request) {
@@ -35,7 +44,7 @@ public class DotSession {
 				ds.map.put(colName, rs.getString(colName));
 			}
 		} catch (Exception e) {
+			log.error("error:"+e.getMessage());
 		}
-		
 	}
 }

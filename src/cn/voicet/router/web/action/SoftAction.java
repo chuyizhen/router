@@ -33,8 +33,10 @@ public class SoftAction extends BaseAction implements ModelDriven<SoftForm>{
 	
 	public String home(){
 		DotSession ds=DotSession.getVTSession(request);
-		softService.getAppVersionInfo(ds);
+		softService.getAppLastVersionInfo(ds);
+		softService.getAppHistoryVersionInfo(ds);
 		log.info("ds.map:"+ds.map);
+		log.info("ds list:"+ds.list);
 		return "show_soft";
 	}
 	

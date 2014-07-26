@@ -3,8 +3,9 @@ package cn.voicet.router.dao.impl;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import oracle.jdbc.OracleTypes;
 
@@ -14,17 +15,19 @@ import org.springframework.stereotype.Repository;
 
 import cn.voicet.router.dao.SoftDao;
 import cn.voicet.router.util.DotSession;
+import cn.voicet.router.util.VTJime;
 import cn.voicet.router.web.form.SoftForm;
 
 @Repository(SoftDao.SERVICE_NAME)
 @SuppressWarnings("static-access")
 public class SoftDaoImpl extends BaseDaoImpl implements SoftDao {
 
-	public void getAppVersionInfo(final DotSession ds) {
+	/** 获取最新app版本 */
+	public void getAppLastVersionInfo(final DotSession ds) {
 		this.getJdbcTemplate().execute(new ConnectionCallback() {
 			public Object doInConnection(Connection conn) throws SQLException,
 					DataAccessException {
-				CallableStatement cs = conn.prepareCall("{call smp_get_appverinfo(?)}");
+				CallableStatement cs = conn.prepareCall("{call sap_get_appverinfo(?)}");
 				cs.registerOutParameter(1, OracleTypes.CURSOR);
 				cs.execute();
 				ResultSet rs = (ResultSet) cs.getObject(1);
@@ -32,6 +35,30 @@ public class SoftDaoImpl extends BaseDaoImpl implements SoftDao {
 				{
 					while(rs.next()){
 						ds.putSessionMapDataByColName(ds, rs);
+					}
+				}
+				return null;
+			}
+		});
+	}
+	
+	/** 获取app更新记录列表 */
+	public void getAppHistoryVersionInfo(final DotSession ds) {
+		this.getJdbcTemplate().execute(new ConnectionCallback() {
+			public Object doInConnection(Connection conn) throws SQLException,
+					DataAccessException {
+				CallableStatement cs = conn.prepareCall("{call smp_get_appverinfo(?)}");
+				cs.registerOutParameter(1, OracleTypes.CURSOR);
+				cs.execute();
+				ResultSet rs = (ResultSet) cs.getObject(1);
+				ds.initListData();
+				Map<Object, Object> map;
+				if(null != rs)
+				{
+					while(rs.next()){
+						map = new HashMap<Object, Object>();
+						VTJime.putMapDataByColName(map, rs);
+						ds.list.add(map);
 					}
 				}
 				return null;

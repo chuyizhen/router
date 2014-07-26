@@ -17,8 +17,11 @@ public class SoftServiceImpl implements SoftService {
 	@Resource(name=SoftDao.SERVICE_NAME)
 	private SoftDao softDao;
 	
-	public void getAppVersionInfo(DotSession ds) {
-		softDao.getAppVersionInfo(ds);
+	public void getAppLastVersionInfo(DotSession ds) {
+		softDao.getAppLastVersionInfo(ds);
+	}
+	public void getAppHistoryVersionInfo(DotSession ds) {
+		softDao.getAppHistoryVersionInfo(ds);
 	}
 	public void updateApkFile(SoftForm softForm) {
 		softDao.updateApkFile(softForm);

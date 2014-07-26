@@ -5,6 +5,7 @@ import cn.voicet.router.web.form.SoftForm;
 
 public interface SoftDao {
 	public final static String SERVICE_NAME = "cn.voicet.router.dao.impl.SoftDaoImpl";
-	void getAppVersionInfo(DotSession ds);
+	void getAppLastVersionInfo(DotSession ds);
+	void getAppHistoryVersionInfo(DotSession ds);
 	void updateApkFile(SoftForm softForm);
 }

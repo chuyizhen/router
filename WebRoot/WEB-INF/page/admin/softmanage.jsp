@@ -69,6 +69,27 @@
                 	<div class="ipt-box"><input type="button" class="btn2" value="提 交" onclick="uploadApkFile()"></div>
             	</div>
 	     	</div>   
+  			<div class="right_content">
+  				<h2>App更新记录</h2>
+  				<div>
+  					<table>
+  						<thead>
+  							<tr>
+  								<th>版本</th>
+  								<th>文件名称</th>
+  								<th>更新日期</th>
+  							</tr>
+  						</thead>
+  						<s:iterator id="ls" value="#session.vts.list">
+  							<tr>
+  								<td><s:property value="#ls.curver"/></td>
+  								<td><s:property value="#ls.apkname"/></td>
+  								<td><s:property value="#ls.updt"/></td>
+  							</tr>
+  						</s:iterator>
+  					</table>
+  				</div> 
+  			</div>
   		</div>
 		<div class="clear"></div>
     </div>
