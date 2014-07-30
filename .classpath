@@ -9,7 +9,7 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/asm-util-2.2.3.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/aspectjrt.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/aspectjweaver.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/c3p0-0.9.1.2.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/c3p0-0.9.1.2.jar" sourcepath="E:/OpenSoftLib/c3p0-0.9.1.2/c3p0-0.9.1.2.src.zip"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cglib-2.2.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/cglib-nodep-2.1_3.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/common-annotations.jar"/>

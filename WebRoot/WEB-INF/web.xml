@@ -6,6 +6,20 @@
 	
 	<display-name>Router</display-name>
 	
+	<!-- 登录过滤器 -->
+	<filter>
+		<filter-name>LoginedCheckFilter</filter-name>
+		<filter-class>cn.voicet.router.filter.LoginedCheckFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginedCheckFilter</filter-name>
+		<url-pattern>*.action</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>LoginedCheckFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	
 	<!-- 使用Struts2整合Spring, web服务器启动时, 需要加载beans.xml -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -23,6 +37,10 @@
 		<filter-name>struts2</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<session-config>
+		<session-timeout>1</session-timeout>
+	</session-config>
 	
 	<welcome-file-list>
 		<welcome-file>index.action</welcome-file>
